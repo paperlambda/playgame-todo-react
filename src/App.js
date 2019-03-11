@@ -1,25 +1,40 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+// import './App.css';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <h1>Todo App</h1>
+        
+        <div>
+          <form>
+            <div>
+              <input type="text"/>
+              <button>Submit</button>
+            </div>
+          </form>
+        </div>
+
+        <div>
+          <label>Shows :</label>
+          <select>
+            <option value="">---------------</option>
+            <option value="">COMPLETED TASK</option>
+            <option value="">UNCOMPLETED TASK</option>
+          </select>
+        </div>
+
+        <div>
+          <ul>
+            <li>
+              <input type="checkbox"/>
+              <a>Todo Items</a>
+              <a>&times;</a>
+            </li>
+          </ul>
+        </div>
       </div>
     );
   }
