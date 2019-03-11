@@ -1,41 +1,59 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-// import './App.css';
+import styled from 'styled-components';
+
+import AddTodoForm from './components/AddTodoForm';
+import TodoFilter from './components/TodoFilter';
+
+const AppWrapper = styled.div`
+  width:360px;
+  margin: 0 auto;
+`
+
+const TodoList = styled.ul`
+  list-style: none;
+  padding-left: 0px;
+`
+
+const TodoItem = styled.li`
+  display:flex;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius:4px;
+  justify-content: space-between;
+`;
+
+const TodoItemText = styled.p`
+  width: 250px;
+  text-align:left;
+  margin: 0;
+`
+
+const RemoveBtn = styled.button`
+  display: flex;
+  justify-self: flex-end;
+`
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <AppWrapper>
         <h1>Todo App</h1>
-        
-        <div>
-          <form>
-            <div>
-              <input type="text"/>
-              <button>Submit</button>
-            </div>
-          </form>
-        </div>
+
+        <AddTodoForm/>
+        <TodoFilter/>
 
         <div>
-          <label>Shows :</label>
-          <select>
-            <option value="">---------------</option>
-            <option value="">COMPLETED TASK</option>
-            <option value="">UNCOMPLETED TASK</option>
-          </select>
-        </div>
-
-        <div>
-          <ul>
-            <li>
+          <TodoList>
+            <TodoItem>
               <input type="checkbox"/>
-              <a>Todo Items</a>
-              <a>&times;</a>
-            </li>
-          </ul>
+              <TodoItemText>Todo Items</TodoItemText>
+              <RemoveBtn>&times;</RemoveBtn>
+            </TodoItem>
+          </TodoList>
         </div>
-      </div>
+      </AppWrapper>
     );
   }
 }
