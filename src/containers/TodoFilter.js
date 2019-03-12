@@ -17,21 +17,21 @@ const Link = styled.a`
   cursor:pointer;
 `
 
-let FilterLink = ({onClickLink}) => {
+let FilterLink = ({handleClick}) => {
     return (
         <div>
           <Inline>
             <li>Shows :</li>
-            <li><Link onClick={() => onClickLink(FilterOptions.SHOW_ALL) }>All</Link></li>
-            <li><Link onClick={() => onClickLink(FilterOptions.SHOW_ACTIVE) }>Active</Link></li>
-            <li><Link onClick={() => onClickLink(FilterOptions.SHOW_COMPLETED) }>Completed</Link></li>
+            <li><Link onClick={() => handleClick(FilterOptions.SHOW_ALL) }>All</Link></li>
+            <li><Link onClick={() => handleClick(FilterOptions.SHOW_ACTIVE) }>Active</Link></li>
+            <li><Link onClick={() => handleClick(FilterOptions.SHOW_COMPLETED) }>Completed</Link></li>
           </Inline>
         </div>
     )
 }
 
 const mapDispatchToProps = dispatch => ({
-  onClickLink: filter => dispatch(setFilter(filter))
+  handleClick: filter => dispatch(setFilter(filter))
 })
 
 FilterLink = connect(null, mapDispatchToProps)(FilterLink)
