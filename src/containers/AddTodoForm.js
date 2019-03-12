@@ -12,8 +12,7 @@ let AddTodoForm = ({dispatch}) => {
 
     const handleSubmit = (e) => {
       e.preventDefault();
-
-      if(!input.value.trim) return;
+      if(!input.value.trim()) return;
       
       dispatch(addTodo(input.value))
       input.value = '';
