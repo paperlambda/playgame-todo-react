@@ -18,27 +18,27 @@ const fetchTodo = action$ => action$.pipe(
 
 const postTodo = action$ => action$.pipe(
     ofType(ADD_TODO),
-    map(action => {
-
+    mergeMap(action => {
 
         // TODO: Find out why API is giving duplicate id (https://github.com/typicode/jsonplaceholder/issues/62)
-        // return ajax.post('https://jsonplaceholder.typicode.com/todos', {
-        //     title: action.text,
-        //     userId: USER_ID,
-        //     completed: false
-        // }).pipe(
-        //     map(res => {
-        //         let toBoolean = res.response.completed === "true" ? true : false;
-        //         res.response.completed = toBoolean;
-        //         return addTodoFulfilled(res.response)
-        //     })
-        // )
-
-        return addTodoFulfilled({
+        return ajax.post('https://jsonplaceholder.typicode.com/todos', {
             title: action.text,
             userId: USER_ID,
             completed: false
-        })
+        }).pipe(
+            map(res => {
+                let toBoolean = res.response.completed === "true" ? true : false;
+                res.response.completed = toBoolean;
+                return addTodoFulfilled(res.response)
+            })
+        )
+
+        // TODO: Uncomment this when not using API
+        // return addTodoFulfilled({
+        //     title: action.text,
+        //     userId: USER_ID,
+        //     completed: false
+        // })
     })
 )
 

@@ -2,7 +2,8 @@ import { FilterOptions, SET_FILTER, FETCH_TODO_FULFILLED, ADD_TODO_FULFILLED, TO
 
 const initialState = {
     filterOption: FilterOptions.SHOW_ALL,
-    todos: []
+    todos: [],
+    lastId: null
 }
 
 function todoApp(state, action){
@@ -18,8 +19,11 @@ function todoApp(state, action){
                 filterOption: action.filter
             })
         case ADD_TODO_FULFILLED:
+            let setId = state.lastId ? state.lastId+=1 : action.todo.id;
+
             return Object.assign({}, state, {
-                todos: [...state.todos, { id: action.todo.id, title: action.todo.title, completed: action.todo.completed }]
+                lastId: setId,
+                todos: [...state.todos, { id: setId, title: action.todo.title, completed: action.todo.completed }]
             })
         case TOGGLE_TODO_FULFILLED:
             return Object.assign({}, state, {
