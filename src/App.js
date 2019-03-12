@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import { connect } from 'react-redux';
-import TodoFilter from './containers/TodoFilter';
+
 import AddTodoForm from './containers/AddTodoForm';
 import VisibleTodoList from './containers/VisibleTodoList';
 import { fetchTodo } from './actions';
+import TodoFilter from './components/TodoFilter';
 
 const AppWrapper = styled.div`
   width:360px;
