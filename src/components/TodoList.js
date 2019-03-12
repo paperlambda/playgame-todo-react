@@ -9,13 +9,15 @@ const TodoListWrapper = styled.ul`
   padding-left: 0px;
 `
 
-const TodoList = ({todos, toggleTodo}) => {
+const TodoList = ({todos, toggleTodo, onRemove}) => {
     return (
         <TodoListWrapper>
             {
-                todos.map((todo, index) => {
-                    return (<Todo {...todo} key={index} index={index} handleChange={(e) => toggleTodo(e)}/>)
-                })
+                todos.map((todo, index) => (
+                    <Todo {...todo} key={index} index={index} 
+                        onRemove={() => onRemove(index)}
+                        handleChange={(e) => toggleTodo(e)}/>)
+                )
             }
         </TodoListWrapper>
     )
@@ -30,6 +32,7 @@ TodoList.propTypes = {
             completed: PropTypes.bool.isRequired
         }).isRequired
     ),
+    onRemove: PropTypes.func.isRequired,
     toggleTodo: PropTypes.func.isRequired
 }
 

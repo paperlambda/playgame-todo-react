@@ -1,4 +1,4 @@
-import { FilterOptions, SET_FILTER, FETCH_TODO_FULFILLED, ADD_TODO_FULFILLED, TOGGLE_TODO_FULFILLED } from '../actions';
+import { FilterOptions, SET_FILTER, FETCH_TODO_FULFILLED, ADD_TODO_FULFILLED, TOGGLE_TODO_FULFILLED, REMOVE_TODO } from '../actions';
 
 const initialState = {
     filterOption: FilterOptions.SHOW_ALL,
@@ -32,6 +32,11 @@ function todoApp(state, action){
                     return todo;
                 })
             })
+        case REMOVE_TODO:
+            return Object.assign({}, state, {
+                todos: state.todos.filter((todo, index) => index !== action.index)
+            })
+
         default: return state
     }
 }

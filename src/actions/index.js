@@ -40,9 +40,10 @@ export const fetchTodoFulfilled = (todos) => {
     }
 }
 
-export function removeTodo(){
+export function removeTodo(index){
     return {
-        type: REMOVE_TODO
+        type: REMOVE_TODO,
+        index
     }
 }
 
@@ -54,10 +55,10 @@ export function setFilter(filter){
 }
 
 export function toggleTodo(event){
-    console.log(event)
     const target = event.target;
     const id = target.value;
     const completed = target.checked;
+
     return {
         type: TOGGLE_TODO,
         payload: {

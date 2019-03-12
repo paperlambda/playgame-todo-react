@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { toggleTodo, FilterOptions } from '../actions';
+import { toggleTodo, FilterOptions, removeTodo } from '../actions';
 
 import TodoList from '../components/TodoList';
 
@@ -22,7 +22,8 @@ const mapStateToProps = state  => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    toggleTodo: payload => dispatch(toggleTodo(payload))
+    toggleTodo: payload => dispatch(toggleTodo(payload)),
+    onRemove: index =>  dispatch(removeTodo(index))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(TodoList)
