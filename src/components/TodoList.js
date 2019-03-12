@@ -19,8 +19,8 @@ const TodoList = ({todos, toggleTodo, onRemove, selectTodo}) => {
                 todos.map((todo, index) => (
                     <Todo {...todo} key={index}
                         selectTodo={() => selectTodo(todo)}
-                        onRemove={() => onRemove(todo.id)}
-                        handleChange={() => toggleTodo(todo.id)}/>)
+                        onRemove={(e) => onRemove(todo.id, e)}
+                        handleChange={(e) => toggleTodo(todo.id, e)}/>)
                 )
             }
         </TodoListWrapper>

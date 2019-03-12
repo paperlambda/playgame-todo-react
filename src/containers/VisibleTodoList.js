@@ -20,8 +20,14 @@ const mapStateToProps = state  => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    toggleTodo: payload => dispatch(toggleTodo(payload)),
-    onRemove: id =>  dispatch(removeTodo(id)),
+    toggleTodo: (payload, e) => {
+      e.stopPropagation()
+      return dispatch(toggleTodo(payload))
+    },
+    onRemove: (id, e) => {
+      e.stopPropagation()
+      return dispatch(removeTodo(id))
+    },
     selectTodo: todo => dispatch(setSelectedTodo(todo))
 })
 
