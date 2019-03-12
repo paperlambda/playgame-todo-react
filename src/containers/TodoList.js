@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { fetchTodo } from '../actions';
+import { fetchTodo, toggleTodo } from '../actions';
 
 const TodoListWrapper = styled.ul`
   list-style: none;
@@ -21,6 +21,7 @@ const TodoItemText = styled.p`
   width: 250px;
   text-align:left;
   margin: 0;
+  text-decoration: ${props => props.completed ? 'line-through': 'none'}
 `
 
 const RemoveBtn = styled.button`
@@ -29,18 +30,27 @@ const RemoveBtn = styled.button`
 `
 
 class TodoList extends Component{
-    componentDidMount(){
+    constructor(props){
+        super(props)
+        
+        this.handleChange = this.handleChange.bind(this)
     }
     fetchTodo(){
         this.props.fetchTodo()
+    }
+    handleChange(event){
+        // event.preventDefault();
+        const id = event.target.value;
+        const value = event.target.checked;
+        this.props.toggleTodo({id, completed: value})
     }
     render(){
         const { todos } = this.props
         let todoRow = todos.map((todo,index) => {
             return (
                 <TodoItem key={index}>
-                  <input type="checkbox"/>
-                  <TodoItemText>{todo.title}</TodoItemText>
+                  <input type="checkbox" checked={todo.completed} onChange={this.handleChange} value={todo.id}/>
+                  <TodoItemText completed={todo.completed}>{todo.title}</TodoItemText>
                   <RemoveBtn>&times;</RemoveBtn>
                 </TodoItem>)
         })
@@ -57,7 +67,8 @@ const mapStateToProps = state  => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    fetchTodo: dispatch(fetchTodo())
+    fetchTodo: dispatch(fetchTodo()),
+    toggleTodo: payload => dispatch(toggleTodo(payload))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(TodoList)

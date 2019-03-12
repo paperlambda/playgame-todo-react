@@ -19,14 +19,14 @@ function todoApp(state, action){
             })
         case ADD_TODO_FULFILLED:
             return Object.assign({}, state, {
-                todos: [...state.todos, { title: action.todo.title, completed: action.todo.completed }]
+                todos: [...state.todos, { id: action.todo.id, title: action.todo.title, completed: action.todo.completed }]
             })
         case TOGGLE_TODO:
             return Object.assign({}, state, {
-                todos: state.todos.map((todo,index) => {
-                    if(index === action.index){
-                        return Object.assign({}, state, {
-                            completed: !todo.completed
+                todos: state.todos.map(todo => { 
+                    if(String(todo.id) === action.payload.id){
+                        return Object.assign({}, todo, {
+                            completed: action.payload.completed
                         })
                     }
                     return todo;

@@ -2,6 +2,7 @@ export const ADD_TODO = 'ADD_TODO';
 export const ADD_TODO_FULFILLED = 'ADD_TODO_FULFILLED';
 export const REMOVE_TODO = 'REMOVE_TODO';
 export const TOGGLE_TODO = 'TOGGLE_TODO';
+export const TOGGLE_TODO_FULFILLED = 'TOGGLE_TODO_FULFILLED'
 export const SET_FILTER = 'SET_FILTER';
 export const FETCH_TODO = 'FETCH_TODO';
 export const FETCH_TODO_FULFILLED = 'FETCH_TODO_FULFILLED';
@@ -52,9 +53,22 @@ export function setFilter(filter){
     }
 }
 
-export function toggleTodo(index){
+export function toggleTodo(payload){
     return {
         type: TOGGLE_TODO,
-        index
+        payload: {
+            id: payload.id,
+            completed: payload.completed
+        }
+    }
+}
+
+export function toggleTodoFulfilled(payload){
+    return {
+        type: TOGGLE_TODO_FULFILLED,
+        payload: {
+            id: payload.id,
+            completed: payload.completed
+        }
     }
 }
