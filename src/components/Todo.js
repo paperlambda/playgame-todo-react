@@ -9,13 +9,15 @@ const TodoItem = styled.li`
   border: 1px solid #ccc;
   border-radius:4px;
   justify-content: space-between;
+  margin-bottom: 3px;
 `;
 
 const TodoItemText = styled.p`
-  width: 250px;
+  width: 240px;
   text-align:left;
   margin: 0;
   text-decoration: ${props => props.completed ? 'line-through': 'none'}
+  cursor: pointer;
 `
 
 const RemoveBtn = styled.button`
@@ -23,9 +25,9 @@ const RemoveBtn = styled.button`
   justify-self: flex-end;
 `
 
-const Todo = ({handleChange, completed, title, onRemove}) => {
+const Todo = ({handleChange, completed, title, onRemove, selectTodo}) => {
     return (
-        <TodoItem>
+        <TodoItem onClick={selectTodo}>
             <input type="checkbox" checked={completed} onChange={handleChange}/>
             <TodoItemText completed={completed}>{title}</TodoItemText>
             <RemoveBtn onClick={onRemove}>&times;</RemoveBtn>
@@ -37,7 +39,8 @@ Todo.propTypes = {
     handleChange: PropTypes.func.isRequired,
     completed: PropTypes.bool.isRequired,
     title: PropTypes.string.isRequired,
-    onRemove: PropTypes.func.isRequired
+    onRemove: PropTypes.func.isRequired,
+    selectTodo: PropTypes.func.isRequired
 }
 
 export default Todo;

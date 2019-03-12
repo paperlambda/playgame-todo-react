@@ -7,14 +7,18 @@ import Todo from './Todo';
 const TodoListWrapper = styled.ul`
   list-style: none;
   padding-left: 0px;
+  margin-top:0px;
+  height: 70vh;
+  overflow-x: hidden;
 `
 
-const TodoList = ({todos, toggleTodo, onRemove}) => {
+const TodoList = ({todos, toggleTodo, onRemove, selectTodo}) => {
     return (
         <TodoListWrapper>
             {
                 todos.map((todo, index) => (
                     <Todo {...todo} key={index}
+                        selectTodo={() => selectTodo(todo)}
                         onRemove={() => onRemove(todo.id)}
                         handleChange={() => toggleTodo(todo.id)}/>)
                 )
@@ -32,7 +36,8 @@ TodoList.propTypes = {
         }).isRequired
     ),
     onRemove: PropTypes.func.isRequired,
-    toggleTodo: PropTypes.func.isRequired
+    toggleTodo: PropTypes.func.isRequired,
+    selectTodo: PropTypes.func.isRequired
 }
 
 export default TodoList;

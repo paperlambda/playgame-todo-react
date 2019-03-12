@@ -6,6 +6,7 @@ export const TOGGLE_TODO_FULFILLED = 'TOGGLE_TODO_FULFILLED'
 export const SET_FILTER = 'SET_FILTER';
 export const FETCH_TODO = 'FETCH_TODO';
 export const FETCH_TODO_FULFILLED = 'FETCH_TODO_FULFILLED';
+export const SET_SELECTED_TODO = 'SET_SELECTED_TODO';
 
 export const FilterOptions = {
     SHOW_ALL: 'SHOW_ALL',
@@ -65,5 +66,13 @@ export function toggleTodoFulfilled(id){
     return {
         type: TOGGLE_TODO_FULFILLED,
         id
+    }
+}
+
+export function setSelectedTodo(todo){
+    console.log(todo)
+    return {
+        type: SET_SELECTED_TODO,
+        todo
     }
 }

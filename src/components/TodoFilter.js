@@ -10,6 +10,7 @@ const Inline = styled.ul`
   list-style: none;
   padding-left: 0px;
   justify-content: space-between;
+  width: 320px;
 `
 
 const TodoFilter = () => {

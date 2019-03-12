@@ -1,7 +1,7 @@
 import { ofType, combineEpics } from 'redux-observable';
-import { mergeMap, map } from 'rxjs/operators';
+import { mergeMap, map, mapTo } from 'rxjs/operators';
 import { ajax } from 'rxjs/ajax';
-import { FETCH_TODO, fetchTodoFulfilled, ADD_TODO, addTodoFulfilled, TOGGLE_TODO, toggleTodoFulfilled} from '../actions';
+import { FETCH_TODO, fetchTodoFulfilled, ADD_TODO, addTodoFulfilled, TOGGLE_TODO, toggleTodoFulfilled, SET_SELECTED_TODO} from '../actions';
 
 const USER_ID = 5;
 
