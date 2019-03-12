@@ -27,10 +27,10 @@ function todoApp(state, action){
             })
         case TOGGLE_TODO_FULFILLED:
             return Object.assign({}, state, {
-                todos: state.todos.map((todo, index) => {
-                    if(String(index) === action.payload.id){
+                todos: state.todos.map((todo) => {
+                    if(todo.id === action.id){
                         return Object.assign({}, todo, {
-                            completed: action.payload.completed
+                            completed: !todo.completed
                         })
                     }
                     return todo;
@@ -38,7 +38,7 @@ function todoApp(state, action){
             })
         case REMOVE_TODO:
             return Object.assign({}, state, {
-                todos: state.todos.filter((todo, index) => index !== action.index)
+                todos: state.todos.filter((todo) => todo.id !== action.id)
             })
 
         default: return state

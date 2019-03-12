@@ -14,9 +14,9 @@ const TodoList = ({todos, toggleTodo, onRemove}) => {
         <TodoListWrapper>
             {
                 todos.map((todo, index) => (
-                    <Todo {...todo} key={index} index={index} 
-                        onRemove={() => onRemove(index)}
-                        handleChange={(e) => toggleTodo(e)}/>)
+                    <Todo {...todo} key={index}
+                        onRemove={() => onRemove(todo.id)}
+                        handleChange={() => toggleTodo(todo.id)}/>)
                 )
             }
         </TodoListWrapper>
@@ -26,8 +26,7 @@ const TodoList = ({todos, toggleTodo, onRemove}) => {
 TodoList.propTypes = {
     todos: PropTypes.arrayOf(
         PropTypes.shape({
-            // TODO: Duplicate id on add todo (https://github.com/typicode/jsonplaceholder/issues/62)
-            id: PropTypes.number,
+            id: PropTypes.number.isRequired,
             title: PropTypes.string.isRequired,
             completed: PropTypes.bool.isRequired
         }).isRequired

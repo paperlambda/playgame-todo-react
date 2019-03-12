@@ -15,19 +15,13 @@ const getVisibleTodos = (todos, filter) => {
   }
 }
 
-// const toggleTodo = (event) => {
-//     const id = event.target.value;
-//     const value = event.target.checked;
-//     dispatch(toggleTodo({id, completed: value}))
-// }
-
 const mapStateToProps = state  => ({
     todos: getVisibleTodos(state.todos, state.filterOption)
 })
 
 const mapDispatchToProps = dispatch => ({
     toggleTodo: payload => dispatch(toggleTodo(payload)),
-    onRemove: index =>  dispatch(removeTodo(index))
+    onRemove: id =>  dispatch(removeTodo(id))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(TodoList)

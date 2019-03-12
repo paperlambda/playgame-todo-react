@@ -23,10 +23,10 @@ const RemoveBtn = styled.button`
   justify-self: flex-end;
 `
 
-const Todo = ({handleChange, completed, id, title, index, onRemove}) => {
+const Todo = ({handleChange, completed, title, onRemove}) => {
     return (
         <TodoItem>
-            <input type="checkbox" checked={completed} onChange={handleChange} value={index}/>
+            <input type="checkbox" checked={completed} onChange={handleChange}/>
             <TodoItemText completed={completed}>{title}</TodoItemText>
             <RemoveBtn onClick={onRemove}>&times;</RemoveBtn>
         </TodoItem>
@@ -36,8 +36,6 @@ const Todo = ({handleChange, completed, id, title, index, onRemove}) => {
 Todo.propTypes = {
     handleChange: PropTypes.func.isRequired,
     completed: PropTypes.bool.isRequired,
-    // TODO: Duplicate id on add todo (https://github.com/typicode/jsonplaceholder/issues/62)
-    id: PropTypes.number,
     title: PropTypes.string.isRequired,
     onRemove: PropTypes.func.isRequired
 }

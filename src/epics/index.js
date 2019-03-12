@@ -52,10 +52,7 @@ const toggleTodo = action$ => action$.pipe(
         // .pipe(
         //     map(res => toggleTodoFulfilled(res.response))
         // )
-        return toggleTodoFulfilled({
-            id: action.payload.id,
-            completed: action.payload.completed
-        })
+        return toggleTodoFulfilled(action.id)
     })
 )
 

@@ -40,10 +40,10 @@ export const fetchTodoFulfilled = (todos) => {
     }
 }
 
-export function removeTodo(index){
+export function removeTodo(id){
     return {
         type: REMOVE_TODO,
-        index
+        id
     }
 }
 
@@ -54,26 +54,16 @@ export function setFilter(filter){
     }
 }
 
-export function toggleTodo(event){
-    const target = event.target;
-    const id = target.value;
-    const completed = target.checked;
-
+export function toggleTodo(id){
     return {
         type: TOGGLE_TODO,
-        payload: {
-            id: id,
-            completed: completed
-        }
+        id
     }
 }
 
-export function toggleTodoFulfilled(payload){
+export function toggleTodoFulfilled(id){
     return {
         type: TOGGLE_TODO_FULFILLED,
-        payload: {
-            id: payload.id,
-            completed: payload.completed
-        }
+        id
     }
 }
