@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import AddTodoForm from './containers/AddTodoForm';
 import TodoFilter from './containers/TodoFilter';
-import TodoList from './containers/TodoList';
+import VisibleTodoList from './containers/VisibleTodoList';
 
 const AppWrapper = styled.div`
   width:360px;
@@ -18,7 +18,7 @@ class App extends Component {
 
       <AddTodoForm/>
       <TodoFilter/>
-      <TodoList/>
+      <VisibleTodoList/>
     </AppWrapper>
     );
   }

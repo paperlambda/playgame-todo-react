@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 
-import { setFilter } from '../actions'
+import { setFilter, FilterOptions } from '../actions'
 
 const Inline = styled.ul`
   display: flex;
@@ -11,18 +11,29 @@ const Inline = styled.ul`
   padding-left: 0px;
   justify-content: space-between;
 `
+const Link = styled.a`
+  text-decoration: underline;
+  color: blue;
+  cursor:pointer;
+`
 
-const FilterOptions = () => {
+let FilterLink = ({onClickLink}) => {
     return (
         <div>
           <Inline>
             <li>Shows :</li>
-            <li><a>All</a></li>
-            <li><a>Active</a></li>
-            <li><a>Completed</a></li>
+            <li><Link onClick={() => onClickLink(FilterOptions.SHOW_ALL) }>All</Link></li>
+            <li><Link onClick={() => onClickLink(FilterOptions.SHOW_ACTIVE) }>Active</Link></li>
+            <li><Link onClick={() => onClickLink(FilterOptions.SHOW_COMPLETED) }>Completed</Link></li>
           </Inline>
         </div>
     )
 }
 
-export default FilterOptions;
+const mapDispatchToProps = dispatch => ({
+  onClickLink: filter => dispatch(setFilter(filter))
+})
+
+FilterLink = connect(null, mapDispatchToProps)(FilterLink)
+
+export default FilterLink;

@@ -21,9 +21,14 @@ const postTodo = action$ => action$.pipe(
     mergeMap(action => {
         return ajax.post('https://jsonplaceholder.typicode.com/todos', {
             title: action.text,
-            userId: USER_ID
+            userId: USER_ID,
+            completed: false
         }).pipe(
-            map(res => addTodoFulfilled(res.response))
+            map(res => {
+                let toBoolean = res.response.completed === "true" ? true : false;
+                res.response.completed = toBoolean;
+                return addTodoFulfilled(res.response)
+            })
         )
     })
 )

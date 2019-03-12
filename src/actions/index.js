@@ -53,12 +53,15 @@ export function setFilter(filter){
     }
 }
 
-export function toggleTodo(payload){
+export function toggleTodo(event){
+    const target = event.target;
+    const id = target.value;
+    const completed = target.checked;
     return {
         type: TOGGLE_TODO,
         payload: {
-            id: payload.id,
-            completed: payload.completed
+            id: id,
+            completed: completed
         }
     }
 }
