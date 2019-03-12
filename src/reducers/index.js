@@ -26,7 +26,7 @@ function todoApp(state, action){
 
             return Object.assign({}, state, {
                 lastId: setId,
-                todos: [...state.todos, { id: setId, title: action.todo.title, completed: action.todo.completed }]
+                todos: [{ id: setId, title: action.todo.title, completed: action.todo.completed }, ...state.todos]
             })
         case TOGGLE_TODO_FULFILLED:
             let findTodo;
