@@ -21,6 +21,7 @@ function todoApp(state, action){
                 selectedTodo: null
             })
         case ADD_TODO_FULFILLED:
+            // TODO: Make up id 
             let setId = state.lastId ? state.lastId+=1 : action.todo.id;
 
             return Object.assign({}, state, {
@@ -28,15 +29,19 @@ function todoApp(state, action){
                 todos: [...state.todos, { id: setId, title: action.todo.title, completed: action.todo.completed }]
             })
         case TOGGLE_TODO_FULFILLED:
+            let findTodo;
+
             return Object.assign({}, state, {
                 todos: state.todos.map((todo) => {
                     if(todo.id === action.id){
-                        return Object.assign({}, todo, {
+                        findTodo = Object.assign({}, todo, {
                             completed: !todo.completed
                         })
+                        return findTodo;
                     }
                     return todo;
-                })
+                }),
+                selectedTodo: findTodo 
             })
         case REMOVE_TODO:
             return Object.assign({}, state, {

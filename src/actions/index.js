@@ -70,7 +70,6 @@ export function toggleTodoFulfilled(id){
 }
 
 export function setSelectedTodo(todo){
-    console.log(todo)
     return {
         type: SET_SELECTED_TODO,
         todo

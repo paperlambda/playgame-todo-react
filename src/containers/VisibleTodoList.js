@@ -20,9 +20,9 @@ const mapStateToProps = state  => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    toggleTodo: (payload, e) => {
+    toggleTodo: (id, e) => {
       e.stopPropagation()
-      return dispatch(toggleTodo(payload))
+      return dispatch(toggleTodo(id))
     },
     onRemove: (id, e) => {
       e.stopPropagation()
