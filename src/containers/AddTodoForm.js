@@ -10,14 +10,18 @@ const Wrapper = styled.div`
 let AddTodoForm = ({dispatch}) => {
     let input;
 
+    const handleSubmit = (e) => {
+      e.preventDefault();
+
+      if(!input.value.trim) return;
+      
+      dispatch(addTodo(input.value))
+      input.value = '';
+    }
+
     return (
         <Wrapper>
-          <form onSubmit={e => {
-              e.preventDefault();
-              if(!input.value.trim) return;
-              dispatch(addTodo(input.value))
-              input.value = '';
-            }}>
+          <form onSubmit={e => handleSubmit(e)}>
             <div>
               <input type="text" ref={node => {
                 input = node

@@ -54,6 +54,7 @@ export function setFilter(filter){
 }
 
 export function toggleTodo(event){
+    console.log(event)
     const target = event.target;
     const id = target.value;
     const completed = target.checked;
