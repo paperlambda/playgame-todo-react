@@ -1,4 +1,4 @@
-import { FilterOptions, SET_FILTER, ADD_TODO, TOGGLE_TODO, FETCH_TODO_FULFILLED } from '../actions';
+import { FilterOptions, SET_FILTER, TOGGLE_TODO, FETCH_TODO_FULFILLED, ADD_TODO_FULFILLED } from '../actions';
 
 const initialState = {
     filterOption: FilterOptions.SHOW_ALL,
@@ -17,9 +17,9 @@ function todoApp(state, action){
             return Object.assign({}, state, {
                 filterOption: action.filter
             })
-        case ADD_TODO:
+        case ADD_TODO_FULFILLED:
             return Object.assign({}, state, {
-                todos: [...state.todos, { text: action.text, completed: false }]
+                todos: [...state.todos, { title: action.todo.title, completed: action.todo.completed }]
             })
         case TOGGLE_TODO:
             return Object.assign({}, state, {

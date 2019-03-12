@@ -1,4 +1,5 @@
 export const ADD_TODO = 'ADD_TODO';
+export const ADD_TODO_FULFILLED = 'ADD_TODO_FULFILLED';
 export const REMOVE_TODO = 'REMOVE_TODO';
 export const TOGGLE_TODO = 'TOGGLE_TODO';
 export const SET_FILTER = 'SET_FILTER';
@@ -15,6 +16,13 @@ export const addTodo = (text) => {
     return {
         type: ADD_TODO,
         text
+    }
+}
+
+export const addTodoFulfilled = (todo) => {
+    return {
+        type:  ADD_TODO_FULFILLED,
+        todo
     }
 }
 
